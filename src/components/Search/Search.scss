@@ -1,3 +1,26 @@
+@use "@/style/helpers/" as *;
+
+
 .search {
     font-size: inherit;
+
+
+    input {
+
+        border: none;
+        padding: .8125rem;
+        background: #f5f5f5;
+        border-radius: 1.5rem;
+        width: 38.75rem;
+
+        @include laptop {
+            width: 23.875rem;
+        }
+
+        
+    }
+
+    @include mobile {
+        display: none;
+    }
 }

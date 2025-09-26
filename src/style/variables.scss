@@ -1,17 +1,16 @@
 @use "./helpers/" as *;
 
 :root {
-  --color-light: #FFFFFF;
+  --color-light: #F3F3F3;
 
-  --color-dark: #141414;
+  --color-grey: #343434;
+  --color-gray-s: #B9B9B9;
 
-  --color-white-orange: #F9977A;
-  --color-orange: #FF6B40;
-  --color-light-orange: #F5E4D4;
-  --color-white-pink: #F579A1;
 
-  --font-family-base: 'Inter', sans-serif;
-  --font-family-accent: 'Kumbh Sans', sans-serif;
+  --color-accent: #197CFF;
+
+
+  --font-family-base: 'Montserrat', sans-serif;
 
   --border: #{rem(25)};
 

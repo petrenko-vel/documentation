@@ -1,0 +1,9 @@
+@use "@/style/helpers/" as *;
+
+
+.social {
+    &__icons{
+        display: flex;
+        gap: 1.4375rem;
+    }
+}

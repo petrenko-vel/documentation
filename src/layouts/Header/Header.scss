@@ -1,0 +1,45 @@
+@use "@/style/helpers/" as *;
+
+
+.header {
+    margin-top: 2.9375rem;
+    
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__menu {
+        display: flex;
+        gap: 1.875rem;
+    }
+
+    &__item {
+        font-size: 1.25rem;
+        font-weight: 500;
+
+        @include laptop {
+            font-size: 1rem;
+        }
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &__link {
+        transition: 0.2s all ease-in;
+
+        &:has(.is-active) {
+            color: var(--color-accent);
+        }
+
+        &:hover {
+            color: var(--color-accent);
+        }
+    }
+
+
+    
+}

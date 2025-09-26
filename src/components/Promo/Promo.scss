@@ -1,0 +1,44 @@
+@use "@/style/helpers/" as *;
+
+.promo {
+    // background: var(--color-gray-s);
+    background: color-mix(in srgb, var(--color-gray-s), transparent 30%);
+    
+    &__inner {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        align-items: center;
+    }
+    &__text {
+        grid-column: 2 / 9;
+        font-size: 1.25rem;
+        font-weight: 500;
+        padding: .9375rem;
+        text-align: center;
+
+        @include laptop {
+            font-size: 1rem;
+        }
+
+        @include mobile {
+            font-size: .625rem;
+        }
+    }
+    &__link {
+        color: var(--color-accent);
+        text-decoration: underline;
+        text-underline-offset: 20%;
+    }
+    &__close {
+        grid-column: 9;
+        padding: .625rem;
+        cursor: pointer;
+        justify-self: end;
+        margin-right: 1.25rem;
+    }
+
+}
+
+// .not-active {
+//     display: none;
+// }
