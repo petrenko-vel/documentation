@@ -27,7 +27,7 @@ export default function Header() {
                             {menuItem.map((item, index) => {
                                 return (
                                     <li key={index} className="header__item">
-                                        <a href={item.link} className="header__link link">{item.name}</a>
+                                        <a href={item.link} className="header__link is-active">{item.name}</a>
                                     </li>
                                 )
                             })}

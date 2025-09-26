@@ -6,4 +6,16 @@
         display: flex;
         gap: 1.4375rem;
     }
+
+
+
+    &__icon:hover{
+        .icon-gray {
+            fill: var(--color-accent);
+        }
+    }
+}
+
+.icon-gray {
+    transition: 0.2s all;
 }
