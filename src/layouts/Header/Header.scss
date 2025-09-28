@@ -2,21 +2,38 @@
 
 
 .header {
-    margin-top: 2.9375rem;
+    margin-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: .0313rem solid #d3d3d3ca;
     
     &__inner {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 1.5rem;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        @include laptop {
+            gap: 1rem;
+        }
     }
 
     &__menu {
         display: flex;
-        gap: 1.875rem;
+        gap: 1rem;
+
+        @include laptop {
+            gap: 1rem;
+        }
     }
 
     &__item {
-        font-size: 1.125rem;
+        font-size: .9375rem;
         font-weight: 500;
 
         @include laptop {
@@ -29,15 +46,18 @@
     }
 
     &__link {
+        padding: .3125rem .75rem;
+        border-radius: 6.25rem;
         transition: 0.2s all ease-in;
-
-        &:has(.is-active) {
-            color: var(--color-accent);
-        }
 
         &:hover {
             color: var(--color-accent);
+            background: color-mix(in srgb, var(--color-gray-s), transparent 70%);
         }
+    }
+    .is-active {
+        color: var(--color-accent); 
+        background: color-mix(in srgb, var(--color-gray-s), transparent 70%);
     }
 
 

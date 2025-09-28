@@ -1,37 +1,45 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import React from 'react'
+import React, { Suspense } from 'react';
 import Header from "./layouts/Header"
-import Content from "./layouts/Content"
-
-
-
+import Documentary from './components/Documentary'
 
 
 function App() {
-  // const pages = import.meta.glob('./pages/*.jsx')
+  
 
-  // const routes = Object.keys(pages).map((path) => {                            // получаем имя файла без расширения и ./pages/
+      // Получаем страницы документации
+    const docPages = import.meta.glob('./pages/documentation/*.jsx', { eager: false });
 
-  //   const name = path.replace('./pages/', '').replace('.jsx', '')              // генерируем компонент для route
-  //   const Component = React.lazy(() => pages[path]())                                // динамический импорт с ленивой загрузкой
-  //   const routePath = name === 'index' ? '/' : `/${name.toLowerCase()}`        // "/" для index, "/name" для остальных
-    
-  //   return { path: routePath, Component }
-  // })
+    // Генерируем маршруты
+    const routes = Object.keys(docPages).map((path) => {
+      const name = path
+        .replace('./pages/documentation/', '')
+        .replace('.jsx', '');
+      const Component = React.lazy(() => docPages[path]());
+      const routePath = name.toLowerCase();
+      return { path: routePath, Component };
+    });
 
   return (
     <Router>
       <Header />
 
-      {/* <Content>
-        <React.Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-       
-          </Routes>
-        </React.Suspense>
-      </Content> */}
 
-      {/* <Footer /> */}
+      <main>
+        <Suspense fallback={<div className="text-center p-4">...Загрузка</div>}>
+          <Routes>
+            <Route path="/documentation" element={<Documentary />}>
+              {routes.map(({ path, Component }) => (
+                <Route
+                  key={path}
+                  path={path}
+                  element={<Component />}
+                />
+              ))}
+            </Route>
+          </Routes>
+        </Suspense>
+      </main>
     </Router>
   )
 }

@@ -4,14 +4,23 @@
 .social {
     &__icons{
         display: flex;
-        gap: 1.4375rem;
+        gap: .3125rem;
     }
 
 
 
-    &__icon:hover{
-        .icon-gray {
-            fill: var(--color-accent);
+    &__icon {
+        padding: .625rem;
+        border-radius: 6.25rem;
+        a {
+            display: flex;
+        }
+    
+        &:hover{
+            background: color-mix(in srgb, var(--color-gray-s), transparent 70%);
+            .icon-gray {
+                fill: var(--color-accent);
+            }
         }
     }
 }

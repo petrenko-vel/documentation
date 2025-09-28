@@ -1,0 +1,72 @@
+@use "@/style/helpers/" as *;
+
+
+.sidebar {
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: var(--color-gray);
+        padding-inline: .75rem;
+        padding-block: 1.5625rem;
+        background-color: var(--color-light);
+        border-radius: 1.25rem;
+        height: 80vh;
+    }
+
+    &__body, &__title--one{
+        padding-inline: 1rem;
+        padding-block: .5rem;
+        cursor: pointer;
+        
+        a {
+            display: block;
+        }
+    }
+
+    &__body{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 1.125rem;
+        font-weight: 500;
+        &::before {
+            content: "";
+        }
+    }
+
+    &__submenu {
+        padding: 0.5rem .3125rem 1rem 1.5625rem;
+        display: flex;
+        flex-direction: column;
+        gap: .625rem;
+    }
+
+    &__subitem{
+        color: color-mix(in srgb, var(--color-gray), transparent 20%);
+    }
+    .open {
+        transition: all 0.1s ease;
+        color: var(--color-accent);
+        border-radius: .9375rem;
+        background-color:color-mix(in srgb, var(--color-accent), transparent 95%);
+
+        svg {
+            transition: all 0.2s ease;
+            transform: rotate(90deg);
+        }
+        path {
+            stroke: var(--color-accent);
+        }
+    }
+
+
+    &__footer {
+        font-size: .9375rem;
+        padding-left: 1rem;
+    }
+}

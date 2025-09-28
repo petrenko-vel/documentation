@@ -3,45 +3,30 @@
 
 .search {
     font-size: inherit;
+    flex: 1 1;
     &__inner {
         position: relative;
-
-        input {
-        border: none;
-        padding: .8125rem 3rem;
-        background: #f5f5f5;
-        border-radius: 1.5rem;
-        font-weight: 500;
-        width: 30rem;
-
-        &:focus {
-            outline: none;
-            box-shadow: 0 0 15.6px -1px rgba(25, 124, 255, 0.30);
-        }
-        
-
-        @include laptop {
-            width: 23.875rem;
-        }
-
-        
-    }
-        
+        display: flex;
     }
 
-    &__icon {
-        position: absolute;
-        top: 50%;
-        left: .625rem; 
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
+    &__button {
         display: flex;
         align-items: center;
-        justify-content: center;
-        transition: left 0.3s ease; 
-        cursor: pointer;
+        padding: .625rem .9375rem;
+        border-radius: 50vh;
+        width: 100%;
+        background: color-mix(in srgb, var(--color-gray-s), transparent 70%);
+        border: none;
+
+        &:active  {
+            outline: .125rem solid var(--color-accient);
+            outline-offset: .125rem;
+        }
+    }
+
+    &__placeholder {
+        margin-left: .8rem;
+        color: var(--color-gray-s);
     }
 
     &:focus-within .search__icon {
@@ -56,8 +41,7 @@
     }
 
     
-
-    @include mobile {
+    @include tablet {
         display: none;
     }
 }
