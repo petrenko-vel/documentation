@@ -1,47 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import React, { Suspense } from 'react';
-import Header from "./layouts/Header"
-import Documentary from './components/Documentary'
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import Panel from './pages/Panel';
+import Docs from './pages/Docs';
+import Home from './pages/Home';
+import Layout from './layouts/Layout';
 
 function App() {
-  
-
-      // Получаем страницы документации
-    const docPages = import.meta.glob('./pages/documentation/*.jsx', { eager: false });
-
-    // Генерируем маршруты
-    const routes = Object.keys(docPages).map((path) => {
-      const name = path
-        .replace('./pages/documentation/', '')
-        .replace('.jsx', '');
-      const Component = React.lazy(() => docPages[path]());
-      const routePath = name.toLowerCase();
-      return { path: routePath, Component };
-    });
-
   return (
-    <Router>
-      <Header />
-
-
-      <main>
-        <Suspense fallback={<div className="text-center p-4">...Загрузка</div>}>
-          <Routes>
-            <Route path="/documentation" element={<Documentary />}>
-              {routes.map(({ path, Component }) => (
-                <Route
-                  key={path}
-                  path={path}
-                  element={<Component />}
-                />
-              ))}
-            </Route>
-          </Routes>
-        </Suspense>
-      </main>
-    </Router>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />        {/* / */}
+          <Route path="docs" element={<Docs />} />  {/* /docs */}
+          <Route path="chat" element={<Panel />} /> {/* /chat */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

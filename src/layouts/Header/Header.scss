@@ -11,6 +11,10 @@
         justify-content: space-between;
         align-items: center;
         gap: 1.5rem;
+
+        @include mobile{
+            gap: 0;
+        }
     }
 
     &__actions {
@@ -21,14 +25,50 @@
         @include laptop {
             gap: 1rem;
         }
+
+        @include mobile {
+            display: none;
+
+            &--active {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                position: absolute;
+                background: #ffffff;
+                padding: 9.375rem 0  3.125rem 0;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100dvh;
+                justify-content: space-between;
+            }
+
+            .header {
+                &__menu {
+                    flex-direction: column;
+                    border-top: var(--border);
+                    gap: 1.25rem;
+                }
+                &__link {
+                    font-size: 2rem;
+                }
+            }
+
+            .social__icons {
+                svg {
+                    width: 3.125rem;
+                    height: auto;
+                }
+            }
+        }
     }
 
     &__menu {
         display: flex;
         gap: 1rem;
 
-        @include laptop {
-            gap: 1rem;
+        @include tablet {
+            gap: 0;
         }
     }
 
@@ -38,10 +78,7 @@
 
         @include laptop {
             font-size: 1rem;
-        }
-
-        @include mobile {
-            display: none;
+            font-size: .875rem;
         }
     }
 

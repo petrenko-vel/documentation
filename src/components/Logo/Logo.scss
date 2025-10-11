@@ -2,10 +2,16 @@
 
 
 .logo {
+    position: relative;
+    z-index: 10;
     &__link {
         display: flex;
         align-items: center;
         gap: 1.25rem;
+        
+        @include tablet {
+            gap: .625rem;
+        }
     }
 
     &__image {
@@ -24,6 +30,9 @@
         @include laptop {
             font-size: 1.125rem;
             padding-right: 0;
+        }
+        @include mobile {
+            display: none;
         }
     }
 }

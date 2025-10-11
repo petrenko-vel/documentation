@@ -1,0 +1,34 @@
+@use "@/style/helpers/" as *;
+
+.header {
+    &__burger {
+
+        span {
+            width: 1.5625rem;
+            height: .125rem;
+            display: block;
+            background-color: var(--color-gray-m);
+            margin-top: .3125rem;
+            transition: 0.2s all ease;
+        }
+
+        &--active span {
+            &:nth-child(1) {
+                transform: translateY(6px) rotate(45deg);
+                width: 1.875rem;
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+                width: 1.875rem;
+            }
+        }
+
+
+        @include mobile-above {
+            display: none;
+        }
+    }
+}

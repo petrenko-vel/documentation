@@ -1,10 +1,10 @@
-import { Outlet } from 'react-router-dom';
-import React, { Suspense } from 'react';
+
+import React from 'react';
 
 import Sidebar from '@/components/Sidebar'
-import './Documentary.scss'
+import './Docs.scss'
 
-export default function Documentary() {
+export default function Docs() {
     return(
         <>
         <div className="documentation-body container">
