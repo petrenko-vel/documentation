@@ -1,0 +1,50 @@
+@use "@/style/helpers/" as *;
+
+.offer {
+    margin-top: 6.25rem;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 3.4375rem;
+        margin-top: 1.25rem;
+
+        @include mobile {
+            font-size: 1.25rem;
+        }
+    }
+
+    &__decriprtion {
+        font-size: 1.25rem;
+        color: var(--color-gray);
+        opacity: 0.8;
+    }
+
+    &__links {
+        display: flex;
+        gap: 1.25rem;
+    }
+
+    &__link {
+        padding: .625rem 1.25rem;
+        color: var(--color-accent);
+        font-weight: 500;
+        font-size: 1.1rem;
+        border-radius: 50vh;
+        margin-top: 4rem;
+        background-color: rgb(232, 232, 232);
+        border: .0625rem solid transparent;
+        transition: 0.2 all ease-in;
+
+        &:hover {
+            border-color: var(--color-accent);
+            background-color: var(--color-light);
+        }
+    }
+
+
+}
