@@ -59,7 +59,7 @@ export default function Sidebar({ activeItem, setActiveItem }) {
                                         {item.title}
                                     </h3>
                                     <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 1L8.5 7L1 13" stroke="#343434" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M1 1L8.5 7L1 13" stroke="#343434" strokeWidth="2" strokeLinecap="round"/>
                                     </svg>
                                 </div>
 

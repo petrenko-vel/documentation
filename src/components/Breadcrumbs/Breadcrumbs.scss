@@ -1,0 +1,28 @@
+@use "@/style/helpers/" as *;
+
+.breadcrumb {
+    
+    
+    &__list {
+        display: flex;
+        gap: 1.25rem;
+
+        &:last-child {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+    }
+
+    &__item {
+        color: var(--color-gray);
+        font-weight: 400;
+
+        &::after {
+            content: ">";
+            display: block;
+            width: .625rem;
+            height: .625rem;
+            position: absolute;
+        }
+    }
+}

@@ -20,7 +20,7 @@ export default function Promo() {
                     aria-label='Закрыть'
                     onClick={() => setIsActive(false)}>
                     <svg width="10" height="10" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L7 7M13 13L7 7M7 7L1 13M7 7L13 1" stroke="#343434" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M1 1L7 7M13 13L7 7M7 7L1 13M7 7L13 1" stroke="#343434" strokeWidth="2" strokeLinecap="round"/>
                     </svg>
                 </div>
             </div>
