@@ -15,7 +15,7 @@ export default function Header() {
     const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
     const menuItem = [
-        {name: "Документация", link: "/docs"},
+        {name: "Документация", link: "/documentation"},
         {name: "Пульт", link: "/panel"},
         {name: "Чат-помощник", link: "/chat"},
     ]
