@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import './Promo.scss'
+import { telegramLink } from '@/assets/links'
+
+
 
 export default function Promo() {
 
@@ -11,7 +14,7 @@ export default function Promo() {
         <div className="promo not-active">
             <div className="promo__inner">
                 <p className="promo__text">
-                    Присоединяйтесь к нам в <a href="#" className='promo__link link'>Telegram</a>. 
+                    Присоединяйтесь к нам в <a href={telegramLink} className='promo__link link'>Telegram</a>. 
                     Узнайте больше!
                 </p>
 

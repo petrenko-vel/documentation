@@ -76,7 +76,9 @@ export default function Sidebar({ activeItem, setActiveItem }) {
                                 }
                             </>) : (
                                 <>
-                                <h3 className="sidebar__title sidebar__title--one"><Link to={item.path}>{item.title}</Link></h3>
+                                <h3 className="sidebar__title sidebar__title--one">
+                                    <Link to={item.path}>{item.title}</Link>
+                                </h3>
                                 </>
                             )}
                         </li>

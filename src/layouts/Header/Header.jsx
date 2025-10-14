@@ -1,29 +1,61 @@
-import React, { useState } from "react";
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Link, useLocation } from "react-router-dom";
 
 import './Header.scss'
 
 import Logo from "@/components/Logo";
 import Search from "@/components/Search";
-import Promo from "@/components/Promo";
-import Social from "@/components/Social";
 import Burger from "@/components/Burger";
 
+// Динамическая загрузка компонентов Promo и Social
+const LazyPromo = lazy(() => import('@/components/Promo'));
+const LazySocial = lazy(() => import('@/components/Social'));
 
 export default function Header() {
+    
 
     const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-
-    const menuItem = [
-        {name: "Документация", link: "/documentation"},
-        {name: "Приборы", link: "/panel"},
-        {name: "Чат-помощник", link: "/chat"},
-    ]
+    const [menuItems, setMenuItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, seterror] = useState(null);
     const location = useLocation();
+    
+    useEffect(() => {
+        async function fetchMenuItems() {
+            try {
+                const response = await fetch('/api/menu')
+
+                if(!response.ok) {
+                    throw new Error("Ошибка при загрузке меню");
+                }
+
+                const data = await response.json();
+                setMenuItems(data);
+            }
+            catch(err) {
+                seterror(err);
+            }
+            finally {
+                setLoading(false);
+            }
+        }
+        fetchMenuItems();
+    }, [])
+
+    if (loading) {
+        return <div>Загрузка меню...</div>;
+    }
+
+    if (error) {
+        return  <div>Ошибочка... {error}</div>;
+    }
+
 
     return(
         <>
-            <Promo />
+            <Suspense fallback={<div>Загрузка...</div>}>
+                <LazyPromo />
+            </Suspense>
             <header className="header">
                 <div className="header__inner container">
                     <Logo />
@@ -31,7 +63,7 @@ export default function Header() {
                     <div className={`header__actions ${isBurgerOpen ? 'header__actions--active' : ''}`}>
                         <nav className="header__nawbar">
                             <ul className="header__menu">
-                                {menuItem.map((item, index) => {
+                                {menuItems.map((item, index) => {
                                     return (
                                         <li key={index} className="header__item">
                                             <Link 
@@ -45,7 +77,9 @@ export default function Header() {
                             </ul>
                         </nav>
 
-                        <Social />
+                        <Suspense fallback={<div>Загрузка...</div>}>
+                            <LazySocial />
+                        </Suspense>
                     </div>
                     <Burger isOpen={isBurgerOpen} toggle={() => setIsBurgerOpen(prev => !prev)} />
                 </div>
