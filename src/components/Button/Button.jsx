@@ -1,17 +1,19 @@
+
 import './Button.scss'
-import clsx from 'clsx'
+import { Link } from 'react-router-dom'
+import clsx from 'clsx';
 
 
-export default(props) => {
-    const { classColor, label, ...rest } = props
+export default function Button(props) {
+    const { className, href, ...rest } = props
 
     return(
-        <button 
-            className={clsx('hero__button', classColor, 'btn')} 
-            type="button"
+        <Link 
+            className={clsx(`${className} button`)}
+            to={href}
             {...rest}
         >
-            {label}
-        </button>
+            {props.children}
+        </Link>
     )
 }

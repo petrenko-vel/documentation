@@ -16,7 +16,7 @@ export default function Header() {
 
     const menuItem = [
         {name: "Документация", link: "/documentation"},
-        {name: "Пульт", link: "/panel"},
+        {name: "Приборы", link: "/panel"},
         {name: "Чат-помощник", link: "/chat"},
     ]
     const location = useLocation();

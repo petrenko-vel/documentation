@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import './Burger.scss'
 
 export default function Burger(props) {

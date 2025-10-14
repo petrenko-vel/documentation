@@ -13,6 +13,15 @@
         color: var(--color-gray);
         border-radius: 1.25rem;
         height: 80vh;
+        width: 25rem;
+
+        @include laptop {
+            width: 18.75rem;
+        }
+
+        @include tablet {
+            display: none;
+        }
     }
 
     &__body, &__title--one{
