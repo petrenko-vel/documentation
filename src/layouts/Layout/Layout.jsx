@@ -8,7 +8,7 @@ import "./Layout.scss"
 export default function Layout() {
     return (
       <>
-      {/* <Header /> */}
+      <Header />
       <main>
         <Outlet />
       </main>

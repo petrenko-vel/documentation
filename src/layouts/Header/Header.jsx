@@ -8,8 +8,8 @@ import Search from "@/components/Search";
 import Burger from "@/components/Burger";
 
 // Динамическая загрузка компонентов Promo и Social
-const LazyPromo = lazy(() => import('@/components/Promo'));
-const LazySocial = lazy(() => import('@/components/Social'));
+const Promo = lazy(() => import('@/components/Promo'));
+const Social = lazy(() => import('@/components/Social'));
 
 export default function Header() {
     
@@ -23,13 +23,14 @@ export default function Header() {
     useEffect(() => {
         async function fetchMenuItems() {
             try {
-                const response = await fetch('/api/menu')
+                const response = await fetch('/api/menu');
 
                 if(!response.ok) {
                     throw new Error("Ошибка при загрузке меню");
                 }
 
                 const data = await response.json();
+                
                 setMenuItems(data);
             }
             catch(err) {
@@ -47,14 +48,14 @@ export default function Header() {
     }
 
     if (error) {
-        return  <div>Ошибочка... {error}</div>;
+        return  <div>Ошибочка... {error.message}</div>;
     }
 
 
     return(
         <>
             <Suspense fallback={<div>Загрузка...</div>}>
-                <LazyPromo />
+                <Promo />
             </Suspense>
             <header className="header">
                 <div className="header__inner container">
@@ -78,7 +79,7 @@ export default function Header() {
                         </nav>
 
                         <Suspense fallback={<div>Загрузка...</div>}>
-                            <LazySocial />
+                            <Social />
                         </Suspense>
                     </div>
                     <Burger isOpen={isBurgerOpen} toggle={() => setIsBurgerOpen(prev => !prev)} />
