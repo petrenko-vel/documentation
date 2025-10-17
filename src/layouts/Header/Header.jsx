@@ -24,13 +24,10 @@ export default function Header() {
         async function fetchMenuItems() {
             try {
                 const response = await fetch('/api/menu');
-
                 if(!response.ok) {
                     throw new Error("Ошибка при загрузке меню");
                 }
-
                 const data = await response.json();
-                
                 setMenuItems(data);
             }
             catch(err) {
