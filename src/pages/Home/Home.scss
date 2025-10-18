@@ -34,6 +34,14 @@
     &__links {
         display: flex;
         gap: 1.25rem;
+        margin-top: 4rem;
+
+        @include mobile {
+           flex-direction: column;
+           gap: 1rem;
+           margin-top: 5rem;
+           width: 100%;
+        }
     }
 
     &__link {
@@ -42,7 +50,6 @@
         font-weight: 500;
         font-size: 1.1rem;
         border-radius: 50vh;
-        margin-top: 4rem;
         background-color: rgb(232, 232, 232);
         border: .0625rem solid transparent;
         transition: 0.2 all ease-in;
@@ -53,9 +60,16 @@
         }
 
         @include tablet {
-            margin-top: 5rem;
             padding: 1.2rem 2.25rem;
             font-size: 1.5rem;
+        }
+
+        @include mobile {
+            width: 100%;
+            padding: 1.2rem 0;
+            display: block;
+            text-align: center;
+            font-size: 1.125rem;
         }
     }
 

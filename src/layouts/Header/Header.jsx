@@ -6,10 +6,12 @@ import './Header.scss'
 import Logo from "@/components/Logo";
 import Search from "@/components/Search";
 import Burger from "@/components/Burger";
+import Promo from '@/components/Promo';
+import Social from '@/components/Social';
 
 // Динамическая загрузка компонентов Promo и Social
-const Promo = lazy(() => import('@/components/Promo'));
-const Social = lazy(() => import('@/components/Social'));
+// const Promo = lazy(() => import('@/components/Promo'));
+// const Social = lazy(() => import('@/components/Social'));
 
 export default function Header() {
     
@@ -51,9 +53,7 @@ export default function Header() {
 
     return(
         <>
-            <Suspense fallback={<div>Загрузка...</div>}>
-                <Promo />
-            </Suspense>
+            <Promo />
             <header className="header">
                 <div className="header__inner container">
                     <Logo />
@@ -75,9 +75,10 @@ export default function Header() {
                             </ul>
                         </nav>
 
-                        <Suspense fallback={<div>Загрузка...</div>}>
+                        {/* <Suspense fallback={<div>Загрузка...</div>}>
                             <Social />
-                        </Suspense>
+                        </Suspense> */}
+                        <Social />
                     </div>
                     <Burger isOpen={isBurgerOpen} toggle={() => setIsBurgerOpen(prev => !prev)} />
                 </div>
