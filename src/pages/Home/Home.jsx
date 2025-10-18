@@ -11,7 +11,7 @@ export default function Home() {
         <section className="offer">
           <div className="offer__inner container">
             <div className="offer__logo-inner">
-              <Logo className="logo__image--home" display='none' />
+              <Logo classNameImage="logo__image--home" display='none' />
             </div>
             <h1 className="offer__title">Умная лаборатория начинается здесь</h1>
             <p className="offer__decriprtion">

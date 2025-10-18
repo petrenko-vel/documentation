@@ -5,11 +5,11 @@ import logo from '@/assets/image/logo.svg'
 
 export default function Logo(props) {
 
-    const { className, display } = props
+    const { divClassName, classNameImage, classNameLink, display } = props
     return(
-        <div className="header__logo logo">
-            <Link to={"/"} className="logo__link">
-                <img src={logo} className={`logo__image ${className}`} width={40} />
+        <div className={`${divClassName} logo`}>
+            <Link to={"/"} className={classNameLink}>
+                <img src={logo} className={classNameImage} width={40} />
                 <span style={{ display: display }}>Signal-master</span>
             </Link>
         </div>

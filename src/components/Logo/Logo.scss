@@ -22,6 +22,10 @@
 
         &--home {
             width: 5.625rem !important;
+
+            @include mobile {
+                display: none;
+            }
         }
     }
 

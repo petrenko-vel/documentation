@@ -34,14 +34,29 @@ app.use((req, res) => {
 });
 
 
+// async function start() {
+//   try {
+//     const client = new MongoClient(process.env.MONGO_URL);
+//     await client.connect();
+//     app.locals.dbClient = client;
+
+//     app.listen(PORT, HOST, () => {
+//       console.log(`✅ Сервер запущен на http://${HOST}:${PORT}`);
+//     });
+//   } catch (err) {
+//     console.error('Ошибка при подключении к MongoDB:', err);
+//   }
+// }
+
+
 async function start() {
   try {
     const client = new MongoClient(process.env.MONGO_URL);
     await client.connect();
     app.locals.dbClient = client;
 
-    app.listen(PORT, HOST, () => {
-      console.log(`✅ Сервер запущен на http://${HOST}:${PORT}`);
+    app.listen(PORT, () => {
+      console.log(`✅ Сервер запущен на http://localhost:${PORT}`);
     });
   } catch (err) {
     console.error('Ошибка при подключении к MongoDB:', err);
