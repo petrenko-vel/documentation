@@ -2,6 +2,7 @@
 
 .header {
     &__burger {
+        z-index: 100;
 
         span {
             width: 1.5625rem;

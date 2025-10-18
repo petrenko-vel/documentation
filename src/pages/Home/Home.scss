@@ -1,6 +1,8 @@
 @use "@/style/helpers/" as *;
 
 .offer {
+    position: relative;
+    z-index: 1;
     margin-top: 6.25rem;
 
     &__inner {
