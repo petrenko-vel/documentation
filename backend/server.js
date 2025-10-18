@@ -8,7 +8,7 @@ import menuRouter from './routes/sidebar.js';
 
 // Создаём сервер и порт 
 dotenv.config({ path: './backend/.env' });
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 const app = express()
 
 
@@ -39,8 +39,8 @@ async function start() {
     await client.connect();
     app.locals.dbClient = client;
 
-    app.listen(PORT, () => {
-      console.log(`✅ Сервер запущен на http://localhost:${PORT}`);
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`✅ Сервер запущен на http://0.0.0.0:${PORT}`);
     });
   } catch (err) {
     console.error('Ошибка при подключении к MongoDB:', err);
@@ -69,7 +69,7 @@ start()
 // dotenv.config();
 
 // const app = express();
-// const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 1000;
 
 
 // const __filename = fileURLToPath(import.meta.url);
