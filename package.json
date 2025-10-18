@@ -9,8 +9,7 @@
     "dev:server": "nodemon --watch server.js --exec node --experimental-modules ./backend/server.js",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "start": "node ./backend/server.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -21,7 +20,8 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.8.2",
-    "ws": "^8.18.3"
+    "ws": "^8.18.3",
+    "nodemon": "^3.1.10"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
@@ -33,6 +33,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "nodemon": "^3.1.10",
     "sass": "^1.93.2",
     "vite": "^7.1.2"
   }

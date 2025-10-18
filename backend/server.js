@@ -9,6 +9,7 @@ import menuRouter from './routes/sidebar.js';
 // Создаём сервер и порт 
 dotenv.config({ path: './backend/.env' });
 const PORT = process.env.PORT || 10000;
+const HOST = '0.0.0.0';
 const app = express()
 
 
@@ -27,10 +28,10 @@ app.use('/api', menuRouter);
 
 
 // Отдаём dist и fallback на index.html для React Router
-app.use(express.static(path.join(__dirname, '../dist')));
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
+// app.use(express.static(path.join(__dirname, '../dist')));
+// app.use((req, res) => {
+//   res.sendFile(path.join(__dirname, '../dist/index.html'));
+// });
 
 
 async function start() {
@@ -39,8 +40,8 @@ async function start() {
     await client.connect();
     app.locals.dbClient = client;
 
-    app.listen(PORT, '0.0.0.0', () => {
-      console.log(`✅ Сервер запущен на http://0.0.0.0:${PORT}`);
+    app.listen(PORT, HOST, () => {
+      console.log(`✅ Сервер запущен на http://${HOST}:${PORT}`);
     });
   } catch (err) {
     console.error('Ошибка при подключении к MongoDB:', err);
