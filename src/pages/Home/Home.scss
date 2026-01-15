@@ -60,7 +60,7 @@
         border-radius: 50vh;
         background-color: rgb(232, 232, 232);
         border: .0625rem solid transparent;
-        transition: 0.2 all ease-in;
+        transition: 0.2s all ease-in;
 
         &:hover {
             border-color: var(--color-accent);

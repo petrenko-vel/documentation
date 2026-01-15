@@ -23,6 +23,7 @@
         width: 100%;
         background: color-mix(in srgb, var(--color-gray-s), transparent 70%);
         border: none;
+        cursor: text;
 
         &:active  {
             outline: .125rem solid var(--color-accient);

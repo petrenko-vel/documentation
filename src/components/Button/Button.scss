@@ -4,6 +4,11 @@
 .blue-bg {
     background-color: var(--color-accent);
     color: var(--color-light);
+    transition: 0.2s all;
+
+    &:hover {
+        color: var(--color-accent);
+    }
 }
 
 .button {
