@@ -10,7 +10,7 @@
             display: block;
             background-color: var(--color-gray-m);
             margin-top: .3125rem;
-            transition: 0.2s all ease;
+            transition: var(--transition-duration);
         }
 
         &--active span {

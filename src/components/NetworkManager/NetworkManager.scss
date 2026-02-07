@@ -1,0 +1,139 @@
+@use "@/style/helpers/" as *;
+
+$fontSizeNetwork: .8125rem;
+
+.network {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0%;
+    bottom: 2%;
+    z-index: 1;
+
+    @include mobile {
+        right: 2%;
+    }
+
+    &__icon {
+        svg {
+            width: 1.875rem;
+            height: auto;
+
+            @include mobile {
+                width: .9375rem;
+            }
+        }
+    }
+    &__title {
+        font-size: $fontSizeNetwork;
+    }
+    &__start {
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+        padding: .625rem 1.5rem .625rem 1rem;
+        background-color: var(--color-light);
+        border-radius: 10rem;
+        cursor: pointer;
+
+        &:hover {
+            .network__arrow {
+                transform: rotate(180deg) translateY(-.2rem);
+                path {
+                    stroke: var(--color-accent);
+                }
+            }
+            .network__button-on {
+                color: var(--color-accent);
+            }
+        }
+    }
+    &__arrow {
+        transition: var(--transition-duration);
+    }
+    &__button-on {
+        font-size: $fontSizeNetwork;
+
+        span {
+            font-weight: 500;
+        }
+
+        @include mobile {
+            display: none;
+        }
+    }
+    &__list {
+        position: absolute;
+        bottom: 120%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-light);
+        border-radius: 1rem;
+        transition: var(--transition-duration);
+    }
+    
+    &__item {
+        width: 100%;
+        padding: 1rem .625rem;
+        font-size: .8125rem;
+        cursor: default;
+        
+        &:hover {
+            background-color: var(--color-gray-s);
+            border-radius: .625rem;
+        }
+    }
+
+    &__contain {
+        display: flex;
+        align-items: center;
+        gap: .3125rem;
+    }
+
+    &__title-network {
+    }
+
+    &__button-connect {
+        background-color: var(--color-accent);
+        color: var(--color-light);
+        border-radius: .3125rem;
+        transition: var(--transition-duration);
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &__controls {
+        margin-top: 1rem;
+    }
+
+    &__form {
+        display: flex;
+        align-items: center;
+        gap: .625rem;
+
+        &-input {
+            width: 100%;
+            border: 1px solid var(--color-gray-s);
+            background-color: var(--color-light);
+            border-radius: .3125rem;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &-button {
+            border-radius: .3125rem;
+            background-color: var(--color-accent);
+            color: var(--color-light);
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+    
+}

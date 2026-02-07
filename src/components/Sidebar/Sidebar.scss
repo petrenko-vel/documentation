@@ -63,13 +63,13 @@
         color: color-mix(in srgb, var(--color-gray), transparent 20%);
     }
     .open {
-        transition: all 0.1s ease;
+        transition: var(--transition-duration);
         color: var(--color-accent);
         border-radius: .9375rem;
         background-color:color-mix(in srgb, var(--color-accent), transparent 95%);
 
         svg {
-            transition: all 0.2s ease;
+            transition: var(--transition-duration);
             transform: rotate(90deg);
         }
         path {

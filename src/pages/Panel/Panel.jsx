@@ -12,13 +12,14 @@ export default function Interface() {
 
   const isActive = devise.length > 0;
 
+
   return (
     <>
     <section className="interface">
       <div className="interface__inner container">
         <div className="interface__head">
           <div className="interface__connect">
-            {/* <span className={`interface__title ${ isActive ? "interface-active" : ""}`}>
+            <span className={`interface__title ${ isActive ? "interface-active" : ""}`}>
             {isActive ? 'Вы подключены к приборам:' : 'Нет активных соединений'}
             </span>
               {devise.map((item, index) => (
@@ -26,12 +27,12 @@ export default function Interface() {
                   {item}
                   {index < devise.length - 1 ? ", " : ""}
                 </span>
-              ))} */}
+              ))}
           </div>
         </div>
         <div className="interface__body generate-interface">
           <div className="generate-interface__title">
-            
+
           </div>
         </div>
       </div>

@@ -86,7 +86,7 @@
     &__link {
         padding: .3125rem .75rem;
         border-radius: 6.25rem;
-        transition: 0.2s all ease-in;
+        transition: var(--transition-duration);
 
         &:hover {
             color: var(--color-accent);

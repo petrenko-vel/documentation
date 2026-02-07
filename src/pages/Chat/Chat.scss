@@ -10,7 +10,7 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        max-width: 900px;
+        width: 1200px;
         margin: 0 auto;
         padding: rem(20) var(--container-padding-x);
     }
@@ -24,24 +24,24 @@
         flex-direction: column;
         gap: rem(16);
         
-        // Кастомный скроллбар
-        // &::-webkit-scrollbar {
-        //     width: rem(6);
-        // }
+        Кастомный скроллбар
+        &::-webkit-scrollbar {
+            width: rem(6);
+        }
 
-        // &::-webkit-scrollbar-track {
-        //     background: var(--color-light);
-        //     border-radius: rem(3);
-        // }
+        &::-webkit-scrollbar-track {
+            background: var(--color-light);
+            border-radius: rem(3);
+        }
 
-        // &::-webkit-scrollbar-thumb {
-        //     background: var(--color-gray-m);
-        //     border-radius: rem(3);
+        &::-webkit-scrollbar-thumb {
+            background: var(--color-gray-m);
+            border-radius: rem(3);
 
-        //     &:hover {
-        //         background: var(--color-gray-s);
-        //     }
-        // }
+            &:hover {
+                background: var(--color-gray-s);
+            }
+        }
     }
 
     // Базовые стили для сообщения

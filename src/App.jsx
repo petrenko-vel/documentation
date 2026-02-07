@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Layout from './layouts/Layout';
 import Chat from './pages/Chat';
 import NotDefind from './components/NotDefind/NotDefind';
+import NetworkManager from './components/NetworkManager';
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path='*' element={<NotDefind />} />
         </Route>
       </Routes>
+      <NetworkManager />
     </BrowserRouter>
   );
 }

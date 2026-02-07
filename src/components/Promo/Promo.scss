@@ -1,7 +1,6 @@
 @use "@/style/helpers/" as *;
 
 .promo {
-    // background: var(--color-gray-s);
     background: color-mix(in srgb, var(--color-gray-s), transparent 30%);
     
     &__inner {
@@ -33,7 +32,3 @@
     }
 
 }
-
-// .not-active {
-//     display: none;
-// }

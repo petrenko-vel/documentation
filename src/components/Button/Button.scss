@@ -4,7 +4,7 @@
 .blue-bg {
     background-color: var(--color-accent);
     color: var(--color-light);
-    transition: 0.2s all;
+    transition: var(--transition-duration);
 
     &:hover {
         color: var(--color-accent);
