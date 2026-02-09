@@ -75,6 +75,8 @@ $fontSizeNetwork: .8125rem;
         background-color: var(--color-light);
         border-radius: 1rem;
         transition: var(--transition-duration);
+        box-shadow: -2px 0px 13px -7px rgba(0, 0, 0, 0.27);
+        border: .0625rem solid var(--color-gray-xs);
 
         @include mobile {
             right: 0;
