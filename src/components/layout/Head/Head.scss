@@ -1,0 +1,65 @@
+@use '@/style/helpers/' as *;
+
+.hero {
+    position: relative;
+    background-color: rgba(245, 228, 212, 0.5);
+    height: 100vh;
+    
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__offer {
+        margin-top: rem(205);
+    }
+
+    &__title {
+        font-family: "Propisi";
+        font-size: clamp(90px, calc(90px + (150 - 90) * ((100vw - 375px) / (1920 - 375))), 150px);
+        font-weight: 400;
+        color: var(--color-orange);
+    }
+
+    &__button {
+
+    }
+    &__image {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        
+
+        &:nth-child(1){
+            animation: showHide 1s infinite;
+        }
+        &:nth-child(2){
+            animation: hideShow 1s infinite;
+        }
+        @keyframes showHide {
+        0%, 50% { opacity: 1; }
+        51%,100% { opacity: 0; }
+        }
+        @keyframes hideShow {
+        0%, 50% { opacity: 0; }
+        51%,100% { opacity: 1; }
+        }
+    }
+    &__decoration-clouds {
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: -20vh;
+
+        @include laptop {
+            bottom: -10vh;
+        }
+
+        @include mobile {
+            max-width: 81.25rem;
+            bottom: -20vh;
+        }
+    }
+}

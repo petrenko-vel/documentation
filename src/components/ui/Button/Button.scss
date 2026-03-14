@@ -1,0 +1,12 @@
+@use '../../../style/helpers/' as *;
+
+
+.blue-bg {
+    background-color: var(--color-accent);
+    color: var(--color-light);
+    transition: var(--transition-duration);
+
+    &:hover {
+        color: var(--color-accent);
+    }
+}

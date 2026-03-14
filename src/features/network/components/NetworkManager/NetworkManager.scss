@@ -1,0 +1,181 @@
+@use "@/style/helpers/" as *;
+
+$fontSizeNetwork: .8125rem;
+
+.network {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    min-width: 18.75rem;
+    right: 0%;
+    bottom: 2%;
+    z-index: 300;
+
+    @include mobile {
+        right: 2%;
+        min-width: auto;
+    }
+
+    &__icon {
+        svg {
+            width: 1.875rem;
+            height: auto;
+
+            @include mobile {
+                width: .9375rem;
+            }
+        }
+    }
+    &__title {
+        font-size: $fontSizeNetwork;
+    }
+    &__start {
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+        padding: .625rem 1.5rem .625rem 1rem;
+        background-color: var(--color-light);
+        border-radius: 10rem;
+        cursor: pointer;
+
+        &:hover {
+            .network__arrow {
+                transform: rotate(180deg) translateY(-.2rem);
+                path {
+                    stroke: var(--color-accent);
+                }
+            }
+            .network__button-on {
+                color: var(--color-accent);
+            }
+        }
+
+        @include mobile {
+            padding: 0.625rem 0.8rem;
+        }
+    }
+    &__arrow {
+        transition: var(--transition-duration);
+    }
+    &__button-on {
+        font-size: $fontSizeNetwork;
+
+        span {
+            font-weight: 500;
+        }
+
+        @include mobile {
+            display: none;
+        }
+    }
+    &__list {
+        overflow-y: scroll;
+        height: 500px;
+        position: absolute;
+        bottom: 120%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-light);
+        border-radius: 1rem;
+        transition: var(--transition-duration);
+        box-shadow: -2px 0px 13px -7px rgba(0, 0, 0, 0.27);
+        border: .0625rem solid var(--color-gray-xs);
+
+        @include mobile {
+            right: 0;
+            width: 18.75rem;
+        }
+    }
+    
+    &__item {
+        width: 100%;
+        padding: 1rem .625rem;
+        font-size: .8125rem;
+        cursor: default;
+        
+        &:hover {
+            background-color: var(--color-gray-s);
+            border-radius: .625rem;
+        }
+    }
+
+    &__contain {
+        display: flex;
+        align-items: center;
+        gap: .3125rem;
+    }
+
+    &__title-network {
+    }
+
+    &__button-connect {
+        background-color: var(--color-accent);
+        color: var(--color-light);
+        border-radius: .3125rem;
+        transition: var(--transition-duration);
+        padding: .5rem 1rem;
+
+        &:hover {
+            opacity: var(--opacity);
+        }
+
+        @include mobile {
+            width: 100%;
+            padding: .5rem 0;
+        }
+    }
+
+    &__controls {
+        margin-top: 1rem;
+    }
+
+    &__password {
+        display: flex;
+        align-items: center;
+        gap: .2rem;
+
+        @include mobile {
+            flex-direction: column;
+        }
+
+        &-input {
+            width: 100%;
+            border: 1px solid var(--color-gray-s);
+            background-color: var(--color-light);
+            border-radius: .3125rem;
+            padding: .5rem;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &-button {
+            border-radius: .3125rem;
+            background-color: var(--color-accent);
+            color: var(--color-light);
+            padding: .5rem;
+
+            &:hover {
+                opacity: var(--opacity);
+            }
+
+            @include mobile {
+                width: 100%;
+            }
+        }
+    }
+    
+}
+
+
+.button-conecting {
+    background-color: transparent;
+    color: var(--color-gray);
+    border: 1px solid var(--color-gray-m); 
+    
+    &:hover {
+        background-color: var(--color-gray-xs);
+    }
+}

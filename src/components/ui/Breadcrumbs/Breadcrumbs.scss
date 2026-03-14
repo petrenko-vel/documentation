@@ -1,0 +1,31 @@
+@use "@/style/helpers/" as *;
+
+.breadcrumb {
+    
+    
+    &__list {
+        display: flex;
+        gap: 2rem;
+
+        a, span {
+            color: var(--color-accent);
+        }
+    }
+
+    &__item {
+        font-weight: 400;
+        position: relative;
+        font-size: .875rem;
+
+        &::after {
+            content: ">";
+            display: block;
+            width: .625rem;
+            height: .625rem;
+            position: absolute;
+            top: 0;
+            right: -1rem;
+            color: var(--color-accent);
+        }
+    }
+}

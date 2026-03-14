@@ -1,0 +1,59 @@
+@use "@/style/helpers/" as *;
+
+
+.search {
+    position: relative;
+    z-index:200;
+    font-size: inherit;
+    flex: 1 1;
+    &__inner {
+        position: relative;
+        display: flex;
+
+        @include mobile {
+        justify-content: flex-end;
+        }
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        padding: .625rem .9375rem;
+        border-radius: 50vh;
+        width: 100%;
+        background: color-mix(in srgb, var(--color-gray-s), transparent 70%);
+        border: none;
+        cursor: text;
+
+        &:active  {
+            outline: .125rem solid var(--color-accient);
+            outline-offset: .125rem;
+        }
+        &:hover {
+            box-shadow: 10px -1px 60px -26px rgb(0, 0, 0);
+        }
+
+        @include mobile {
+            width: auto;
+            padding: .625rem;
+            background: none;
+        }
+    }
+
+    &__placeholder {
+        margin-left: .8rem;
+        color: var(--color-gray-s);
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__icon {
+        @include mobile {
+            width: 1.5rem;
+            height: auto;
+        }
+    }
+
+}

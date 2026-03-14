@@ -1,0 +1,43 @@
+
+
+.interface {
+    &__inner {
+        margin-top: 1.25rem;
+    }
+
+    &__head {
+        display: flex;
+        justify-content: right;
+    }
+    &__connect {
+        display: flex;
+        gap: 1.25rem;
+        font-size: .9375rem;
+        padding: .625rem 1.25rem;
+        border-radius: .625rem;
+        background-color: var(--color-light);
+    }
+    &__title {
+        font-weight: 700;
+
+        &::before {
+            content: "✖";
+            color: var(--color-gray);
+            display: inline-block;
+            margin-right: 7px;
+        }
+
+        &.interface-active::before {
+            content: "✔";
+            color: green;
+            display: inline-block;
+            margin-right: 7px;
+        }
+    }
+    &__devises {
+        font-weight: 400;
+    }
+    &__body {
+        
+    }
+}

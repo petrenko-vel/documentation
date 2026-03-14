@@ -1,0 +1,24 @@
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+}
+
+
+a {
+    text-decoration: none;
+    color: var(--color-gray);
+}
+
+.link {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 20%;
+
+    &:hover {
+        opacity: var(--opacity);
+    }
+}

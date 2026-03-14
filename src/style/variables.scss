@@ -1,0 +1,29 @@
+@use "./helpers/" as *;
+
+:root {
+  --color-light: #F3F3F3;
+
+  --color-gray: #343434;
+  --color-gray-xs: #cccccc;
+  --color-gray-s: #B9B9B9;
+  --color-gray-m: #9D9D9D;
+
+  --color-accent: #197CFF;
+
+
+  --font-family-base: 'Montserrat', sans-serif;
+
+  --border: #{rem(25)};
+
+  --opacity: 0.7;
+
+  --container-width: #{rem(1790)};
+  --container-padding-x: #{rem(16)};
+
+  --transition-duration: 0.2s all ease;
+  
+
+    @include laptop {
+    --container-width: #{rem(1440)};
+  }
+}

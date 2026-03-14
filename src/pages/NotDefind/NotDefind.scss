@@ -1,0 +1,13 @@
+@use "@/style/helpers/" as *;
+
+.not-defind {
+    &__inner {
+
+    }
+    &__error {
+        font-weight: 600;
+        font-size: 10rem;
+        color: var(--color-accent);
+        @include abs-center;
+    }
+}

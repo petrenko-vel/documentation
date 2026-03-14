@@ -1,0 +1,44 @@
+@use "@/style/helpers/" as *;
+
+
+.interface-instruments {
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    &__title {
+
+    }
+    &__container {
+
+    }
+    &__canvas {
+        width: 50rem;
+        height: 25rem;
+        background-color: var(--color-gray);
+    }
+
+    &__list {
+
+    }
+    &__item {
+
+    }
+
+}
+
+.item-instrument {
+    &__title {
+
+    }
+    &__list {
+
+    }
+    &__item {
+
+    }
+    &__button {
+
+    }
+}
