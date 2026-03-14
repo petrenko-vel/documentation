@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Head.scss'
-import Button from '../Button'
+import Button from '../ui/Button'
 import Modal from '../Modal'
 // import ScaleOnScroll from '../ScaleOnScroll'
 

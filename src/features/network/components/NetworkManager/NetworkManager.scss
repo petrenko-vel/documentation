@@ -6,12 +6,14 @@ $fontSizeNetwork: .8125rem;
     display: flex;
     flex-direction: column;
     position: fixed;
+    min-width: 18.75rem;
     right: 0%;
     bottom: 2%;
-    z-index: 1;
+    z-index: 300;
 
     @include mobile {
         right: 2%;
+        min-width: auto;
     }
 
     &__icon {
@@ -67,6 +69,8 @@ $fontSizeNetwork: .8125rem;
         }
     }
     &__list {
+        overflow-y: scroll;
+        height: 500px;
         position: absolute;
         bottom: 120%;
         width: 100%;
@@ -113,7 +117,7 @@ $fontSizeNetwork: .8125rem;
         padding: .5rem 1rem;
 
         &:hover {
-            opacity: 0.8;
+            opacity: var(--opacity);
         }
 
         @include mobile {
@@ -126,7 +130,7 @@ $fontSizeNetwork: .8125rem;
         margin-top: 1rem;
     }
 
-    &__form {
+    &__password {
         display: flex;
         align-items: center;
         gap: .2rem;
@@ -154,7 +158,7 @@ $fontSizeNetwork: .8125rem;
             padding: .5rem;
 
             &:hover {
-                opacity: 0.8;
+                opacity: var(--opacity);
             }
 
             @include mobile {
@@ -163,4 +167,15 @@ $fontSizeNetwork: .8125rem;
         }
     }
     
+}
+
+
+.button-conecting {
+    background-color: transparent;
+    color: var(--color-gray);
+    border: 1px solid var(--color-gray-m); 
+    
+    &:hover {
+        background-color: var(--color-gray-xs);
+    }
 }

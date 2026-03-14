@@ -12,12 +12,14 @@ export default defineConfig({
       '@': path.resolve('src') + '/', // @ → папка src
     },
   },
+
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:10000',
+        target: 'http://signalmaster.local',
         changeOrigin: true,
-      }
-    }
-  }
+        secure: false,
+      },
+    },
+  },
 })

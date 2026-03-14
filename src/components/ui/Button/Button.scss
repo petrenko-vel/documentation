@@ -1,4 +1,4 @@
-@use '../../style/helpers/' as *;
+@use '../../../style/helpers/' as *;
 
 
 .blue-bg {
@@ -9,8 +9,4 @@
     &:hover {
         color: var(--color-accent);
     }
-}
-
-.button {
-    
 }

@@ -31,7 +31,7 @@
     &__decriprtion {
         font-size: 1.25rem;
         color: var(--color-gray);
-        opacity: 0.8;
+        opacity: var(--opacity);
 
         @include tablet {
             max-width: 40rem;

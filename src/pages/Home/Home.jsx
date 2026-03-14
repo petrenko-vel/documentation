@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.scss'
-import Logo from '@/components/Logo';
-import Button from '@/components/Button';
+import Logo from '@/components/ui/Logo';
+import Button from '@/components/ui/Button';
 
 import { telegramLink } from '@/assets/links'
 

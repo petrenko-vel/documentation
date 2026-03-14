@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 import './Search.scss'
-import SearchModal from '../SeachModal/SearchModal';
+import SearchModal from '@/components/ui/SearchModal';
 
 
 export default function Search() {

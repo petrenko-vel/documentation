@@ -19,6 +19,6 @@ a {
     text-underline-offset: 20%;
 
     &:hover {
-        opacity: 0.6;
+        opacity: var(--opacity);
     }
 }

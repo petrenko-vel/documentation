@@ -3,37 +3,20 @@ import { NavLink, useLocation } from "react-router-dom";
 
 import './Header.scss'
 
-import Logo from "@/components/Logo";
-import Search from "@/components/Search";
-import Burger from "@/components/Burger";
-import Promo from '@/components/Promo';
-import Social from '@/components/Social';
+import Logo from "@/components/ui/Logo";
+import Search from "@/components/ui/Search";
+import Burger from "@/components/ui/Burger";
+import Promo from '@/components/ui/Promo';
+import Social from '@/components/ui/Social';
 
 export default function Header() {
     const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-    const [menuItems, setMenuItems] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, seterror] = useState(null);
 
-    useEffect(() => {
-        async function fetchMenuItems() {
-            try {
-                const response = await fetch('/api/menu');
-                if(!response.ok) {
-                    throw new Error("Ошибка при загрузке меню");
-                }
-                const data = await response.json();
-                setMenuItems(data);
-            }
-            catch(err) {
-                seterror(err);
-            }
-            finally {
-                setLoading(false);
-            }
-        }
-        fetchMenuItems();
-    }, [])
+    const menuItems = [
+        { id: 1, name: "Документация", link: '/documentation' },
+        { id: 2, name: "Управление", link: '/panel' },
+        { id: 3, name: "Чат", link: '/chat' }
+    ]
 
 
     return(
@@ -46,16 +29,14 @@ export default function Header() {
                 <div className={`header__actions ${isBurgerOpen ? 'header__actions--active' : ''}`}>
                     <nav className="header__nawbar">
                         <ul className="header__menu">
-                            {loading && " "}
-                            {error && <li>{error.message}</li>}
-                            {!loading && !error && menuItems.map((item, index) => (
-                                <li key={index} className="header__item">
+                            {menuItems.map(({id, name, link}) => (
+                                <li key={id} className="header__item">
                                 <NavLink
-                                    to={item.link}
+                                    to={link}
                                     className={({ isActive }) => `header__link ${isActive ? 'is-active' : ''}`}
                                     onClick={() => setIsBurgerOpen(false)}
                                 >
-                                    {item.name}
+                                    {name}
                                 </NavLink>
                                 </li>
                             ))}
