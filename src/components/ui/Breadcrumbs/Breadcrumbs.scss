@@ -5,17 +5,17 @@
     
     &__list {
         display: flex;
-        gap: 1.25rem;
+        gap: 2rem;
 
-        &:last-child {
+        a, span {
             color: var(--color-accent);
-            font-weight: 600;
         }
     }
 
     &__item {
-        color: var(--color-gray);
         font-weight: 400;
+        position: relative;
+        font-size: .875rem;
 
         &::after {
             content: ">";
@@ -23,6 +23,9 @@
             width: .625rem;
             height: .625rem;
             position: absolute;
+            top: 0;
+            right: -1rem;
+            color: var(--color-accent);
         }
     }
 }

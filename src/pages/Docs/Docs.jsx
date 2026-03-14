@@ -3,39 +3,30 @@ import { Route, Routes, Outlet, useLocation } from 'react-router-dom';
 import Sidebar from '@/components/layout/Sidebar';
 import Breadcrumbs from '@/components/ui/Breadcrumbs'; // Убедитесь, что путь импорта корректен
 import './Docs.scss';
-import Panel from '../ControlPanel';
+import TempaleDocsInstrument from './components/TempaleDocsInstrument/TempaleDocsInstrument';
+import { docsContent } from './data/docsData';
 
 const DocsLayout = () => {
   const location = useLocation();
 
   // Получаем путь и разбиваем его, начиная с /documentation
   const pathnames = location.pathname.split('/').filter((x) => x);
-  const isDocumentationPath = pathnames[0] === 'documentation';
-
-  // Формируем "хлебные крошки"
-  const breadcrumbItems = isDocumentationPath
-    ? [
-        { name: 'Документация', url: '/documentation' },
-        ...pathnames.slice(1).map((name, index) => {
-          const url = `/documentation/${pathnames.slice(1, index + 2).join('/')}`;
-          return {
-            name: name.charAt(0).toUpperCase() + name.slice(1),
-            url,
-          };
-        }),
-      ]
-    : [];
+  const breadcrumbItems = [
+  { name: 'Документация', url: '/documentation' },
+  ...pathnames.slice(1).map((slug) => ({
+    name: docsContent[slug]?.title || slug,
+    url: `/documentation/${slug}`,
+  })),
+];
 
   return (
-    <section className="documentation">
-      <div className="documentation__inner container">
-        <Sidebar />
-        <div className="documentation__content">
-           {isDocumentationPath && <Breadcrumbs items={breadcrumbItems} />}
-          <Outlet /> {/* Здесь рендерятся вложенные маршруты */}
-        </div>
+    <div className="documentation__inner container">
+      <Sidebar />
+      <div className="documentation__content">
+        <Breadcrumbs items={breadcrumbItems} />
+        <Outlet /> 
       </div>
-    </section>
+    </div>
   );
 };
 
@@ -43,8 +34,10 @@ export default function Docs() {
   return (
     <Routes>
       <Route element={<DocsLayout />}>
-        <Route index element={<Panel />} />
-        <Route path="ystanovka" element={<Panel />} />
+        {/* Когда просто /documentation */}
+        <Route index element={<h2>Выберите раздел документации</h2>} />
+        {/* Когда /documentation/ystanovka */}
+        <Route path=":page" element={<TempaleDocsInstrument />} />
       </Route>
     </Routes>
   );
