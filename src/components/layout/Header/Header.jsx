@@ -25,33 +25,33 @@ export default function Header() {
 
 
     return(
-        <>
-        <Promo />
-        <header className="header">
-            <div className="header__inner container">
-                <Logo divClassName="header__logo" classNameLink="logo__link"/>
-                <Search />
-                <div className={`header__actions ${isBurgerOpen ? 'header__actions--active' : ''}`}>
-                    <nav className="header__nawbar">
-                        <ul className="header__menu">
-                            {menuItems.map(({id, name, link}) => (
-                                <li key={id} className="header__item">
-                                <NavLink
-                                    to={link}
-                                    className={({ isActive }) => `header__link ${isActive ? 'is-active' : ''}`}
-                                    onClick={() => setIsBurgerOpen(false)}
-                                >
-                                    {name}
-                                </NavLink>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
-                    <Social />
-                </div>
-                <Burger isOpen={isBurgerOpen} toggle={() => setIsBurgerOpen(prev => !prev)} />
-            </div>                 
-        </header>
-        </>
+        <div className="header-sticky-wrapper">
+            <Promo />
+            <header className="header">
+                <div className="header__inner container">
+                    <Logo divClassName="header__logo" classNameLink="logo__link"/>
+                    <Search />
+                    <div className={`header__actions ${isBurgerOpen ? 'header__actions--active' : ''}`}>
+                        <nav className="header__nawbar">
+                            <ul className="header__menu">
+                                {menuItems.map(({id, name, link}) => (
+                                    <li key={id} className="header__item">
+                                    <NavLink
+                                        to={link}
+                                        className={({ isActive }) => `header__link ${isActive ? 'is-active' : ''}`}
+                                        onClick={() => setIsBurgerOpen(false)}
+                                    >
+                                        {name}
+                                    </NavLink>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+                        <Social />
+                    </div>
+                    <Burger isOpen={isBurgerOpen} toggle={() => setIsBurgerOpen(prev => !prev)} />
+                </div>                 
+            </header>
+        </div>
     )
 }

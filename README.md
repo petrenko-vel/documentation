@@ -1,4 +1,4 @@
-# 🚀 Documentation & AI Mentor System
+# Веб-приложение для управления устройствами и ИИ-ментора на Raspberry Pi
 
 [![Vite](https://img.shields.io/badge/Vite-7.x-646CFF?logo=vite)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-19.x-61DAFB?logo=react)](https://react.dev/)
@@ -128,4 +128,4 @@ documentation/
 Этот проект лицензирован под MIT License — подробности в файле [LICENSE](LICENSE).
 
 ---
-*Сделано с ❤️ для разработчиков и инженеров.*
+*Сделано с ❤️ для разработчиков и инженеров.*

@@ -1,19 +1,21 @@
 @use "@/style/helpers/" as *;
 
 .promo {
-    background: color-mix(in srgb, var(--color-gray-s), transparent 30%);
-    
+    background: var(--color-gray-xs);
+
     &__inner {
         display: grid;
         grid-template-columns: repeat(9, 1fr);
         align-items: center;
     }
+
     &__text {
         grid-column: 2 / 9;
         font-size: 0.9rem;
         font-weight: 500;
         padding: .6rem;
         text-align: center;
+
         @include mobile {
             font-size: .625rem;
         }
