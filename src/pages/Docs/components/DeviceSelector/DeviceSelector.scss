@@ -1,0 +1,111 @@
+@use '../../../../style/helpers/' as *;
+
+.device-selector {
+  position: relative;
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+    padding: rem(8) rem(14);
+    background: #fff;
+    border: 1px solid var(--color-light);
+    border-radius: rem(12);
+    cursor: pointer;
+    font-family: var(--font-family-base);
+    transition: all 0.15s ease;
+    width: 100%;
+
+    @include hover {
+      border-color: var(--color-gray-xs);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    &--open {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(25, 124, 255, 0.1);
+    }
+  }
+
+  &__icon {
+    @include flex-center;
+    @include square(rem(32));
+    flex-shrink: 0;
+    background: color-mix(in srgb, var(--color-accent), transparent 90%);
+    border-radius: rem(8);
+    color: var(--color-accent);
+  }
+
+  &__name {
+    flex: 1;
+    text-align: left;
+    font-size: rem(14);
+    font-weight: 500;
+    color: var(--color-gray);
+  }
+
+  &__chevron {
+    flex-shrink: 0;
+    color: var(--color-gray-s);
+    transition: transform 0.2s ease;
+
+    .device-selector__trigger--open & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + rem(6));
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: #fff;
+    border: 1px solid var(--color-light);
+    border-radius: rem(12);
+    padding: rem(4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    animation: dropdown-appear 0.15s ease-out;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+    width: 100%;
+    padding: rem(10) rem(12);
+    border-radius: rem(8);
+    font-size: rem(14);
+    font-family: var(--font-family-base);
+    color: var(--color-gray);
+    cursor: pointer;
+    transition: background 0.12s ease;
+    text-align: left;
+
+    @include hover {
+      background: var(--color-light);
+    }
+
+    &--active {
+      color: var(--color-accent);
+      font-weight: 600;
+      background: color-mix(in srgb, var(--color-accent), transparent 93%);
+    }
+  }
+
+  &__check {
+    margin-left: auto;
+    color: var(--color-accent);
+  }
+}
+
+@keyframes dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateY(rem(-4));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

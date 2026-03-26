@@ -1,0 +1,126 @@
+@use '../../../../style/helpers/' as *;
+
+.docs-sidebar {
+  position: sticky;
+  top: rem(20);
+  align-self: flex-start;
+  width: rem(280);
+  min-width: rem(280);
+  height: calc(100vh - rem(120));
+  overflow-y: auto;
+  background-color: var(--color-light);
+  border-radius: rem(20);
+  padding: rem(20) rem(12);
+
+  // Скроллбар
+  &::-webkit-scrollbar {
+    width: rem(4);
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gray-xs);
+    border-radius: rem(2);
+  }
+
+  @include laptop {
+    width: rem(240);
+    min-width: rem(240);
+  }
+
+  @include tablet {
+    display: none;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__heading {
+    font-size: rem(14);
+    font-weight: 600;
+    color: var(--color-gray-m);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0 rem(12) rem(12);
+    margin: 0;
+    border-bottom: 1px solid var(--color-gray-xs);
+  }
+
+  &__list,
+  &__children {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__list {
+    margin-top: rem(8);
+  }
+
+  &__children {
+    overflow: hidden;
+  }
+
+  // Элемент навигации
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: rem(6);
+    padding: rem(7) rem(12);
+    border-radius: rem(10);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+
+    @include hover {
+      background-color: color-mix(in srgb, var(--color-gray-xs), transparent 40%);
+    }
+
+    &--active {
+      background-color: color-mix(in srgb, var(--color-accent), transparent 90%);
+      
+      .docs-sidebar__text {
+        color: var(--color-accent);
+        font-weight: 600;
+      }
+    }
+
+    &--parent-active {
+      .docs-sidebar__text {
+        color: var(--color-gray);
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__text {
+    font-size: rem(14);
+    line-height: 1.4;
+    color: var(--color-gray);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // Chevron toggle
+  &__toggle {
+    @include flex-center;
+    @include square(rem(20));
+    flex-shrink: 0;
+    border-radius: rem(4);
+    color: var(--color-gray-s);
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.15s ease;
+
+    @include hover {
+      color: var(--color-gray);
+    }
+
+    &--open {
+      transform: rotate(90deg);
+    }
+  }
+}
