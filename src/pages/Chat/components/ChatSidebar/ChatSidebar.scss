@@ -1,0 +1,387 @@
+@use '../../../../style/helpers/' as *;
+
+$sidebar-width: rem(300);
+
+.chat-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: $sidebar-width;
+  min-width: $sidebar-width;
+  height: 100%;
+  background: #fff;
+  border-right: 1px solid var(--color-light);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  &__overlay {
+    display: none;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: rem(16) rem(16) rem(12);
+    border-bottom: 1px solid var(--color-light);
+  }
+
+  &__title {
+    font-size: rem(16);
+    font-weight: 600;
+    color: var(--color-gray);
+    margin: 0;
+  }
+
+  &__header-actions {
+    display: flex;
+    align-items: center;
+    gap: rem(6);
+  }
+
+  &__icon-btn {
+    @include flex-center;
+    @include square(rem(32));
+    border-radius: rem(8);
+    color: var(--color-gray-m);
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    @include hover {
+      background: var(--color-light);
+      color: var(--color-gray);
+    }
+  }
+
+  &__new-btn {
+    display: flex;
+    align-items: center;
+    gap: rem(6);
+    padding: rem(6) rem(12);
+    background: var(--color-accent);
+    color: #fff;
+    border-radius: rem(8);
+    font-size: rem(13);
+    font-family: var(--font-family-base);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    @include hover {
+      background: #1466cc;
+    }
+  }
+
+  // Список чатов
+  &__list {
+    flex: 1;
+    overflow-y: auto;
+    padding: rem(8) rem(8);
+
+    &::-webkit-scrollbar {
+      width: rem(4);
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-gray-xs);
+      border-radius: rem(2);
+    }
+  }
+
+  // Элемент чата
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+    padding: rem(10) rem(12);
+    border-radius: rem(10);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+
+    @include hover {
+      background: var(--color-light);
+    }
+
+    &--active {
+      background: rgba(25, 124, 255, 0.08);
+
+      .chat-sidebar__item-title {
+        color: var(--color-accent);
+        font-weight: 600;
+      }
+
+      @include hover {
+        background: rgba(25, 124, 255, 0.12);
+      }
+    }
+  }
+
+  &__item-icon {
+    @include flex-center;
+    @include square(rem(32));
+    flex-shrink: 0;
+    background: var(--color-light);
+    border-radius: rem(8);
+    color: var(--color-gray-m);
+  }
+
+  &__item-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: rem(2);
+  }
+
+  &__item-title {
+    font-size: rem(13);
+    font-weight: 500;
+    color: var(--color-gray);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__item-preview {
+    font-size: rem(11);
+    color: var(--color-gray-s);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__item-time {
+    font-size: rem(10);
+    color: var(--color-gray-s);
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: rem(2);
+  }
+
+  // Группы
+  &__group {
+    margin-bottom: rem(4);
+  }
+
+  &__group-header {
+    display: flex;
+    align-items: center;
+    gap: rem(6);
+    padding: rem(8) rem(12);
+    border-radius: rem(8);
+    cursor: pointer;
+    transition: background 0.15s ease;
+    user-select: none;
+
+    @include hover {
+      background: var(--color-light);
+    }
+  }
+
+  &__group-chevron {
+    flex-shrink: 0;
+    color: var(--color-gray-s);
+    transition: transform 0.2s ease;
+
+    &--open {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__group-name {
+    font-size: rem(12);
+    font-weight: 600;
+    color: var(--color-gray-m);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__group-count {
+    font-size: rem(10);
+    color: var(--color-gray-s);
+    background: var(--color-light);
+    padding: rem(2) rem(6);
+    border-radius: rem(10);
+  }
+
+  &__group-rename {
+    flex: 1;
+    border: 1px solid var(--color-accent);
+    border-radius: rem(4);
+    padding: rem(2) rem(6);
+    font-size: rem(12);
+    font-family: var(--font-family-base);
+    font-weight: 600;
+    color: var(--color-gray);
+    outline: none;
+    background: #fff;
+  }
+
+  &__group-items {
+    padding-left: rem(8);
+  }
+
+  // Секция "без группы"
+  &__section-label {
+    font-size: rem(11);
+    font-weight: 600;
+    color: var(--color-gray-s);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: rem(12) rem(12) rem(6);
+  }
+
+  // Пустое состояние
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: rem(40) rem(20);
+    text-align: center;
+    color: var(--color-gray-s);
+
+    svg {
+      margin-bottom: rem(12);
+      opacity: 0.4;
+    }
+
+    p {
+      font-size: rem(14);
+      font-weight: 500;
+      color: var(--color-gray-m);
+      margin: 0 0 rem(4) 0;
+    }
+
+    span {
+      font-size: rem(12);
+    }
+  }
+
+  // Контекстное меню
+  &__context-menu {
+    position: fixed;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid var(--color-light);
+    border-radius: rem(10);
+    padding: rem(4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    min-width: rem(170);
+    animation: context-appear 0.12s ease-out;
+  }
+
+  &__context-btn {
+    display: flex;
+    align-items: center;
+    gap: rem(8);
+    width: 100%;
+    padding: rem(8) rem(12);
+    border-radius: rem(6);
+    font-size: rem(13);
+    font-family: var(--font-family-base);
+    color: var(--color-gray);
+    cursor: pointer;
+    transition: background 0.12s ease;
+    text-align: left;
+
+    @include hover {
+      background: var(--color-light);
+    }
+
+    &--danger {
+      color: #e53935;
+
+      @include hover {
+        background: rgba(229, 57, 53, 0.06);
+      }
+    }
+  }
+
+  &__context-submenu {
+    position: relative;
+
+    &:hover .chat-sidebar__context-sub {
+      display: block;
+    }
+  }
+
+  &__context-sub {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: #fff;
+    border: 1px solid var(--color-light);
+    border-radius: rem(10);
+    padding: rem(4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    min-width: rem(150);
+    z-index: 1001;
+
+    button {
+      display: block;
+      width: 100%;
+      padding: rem(8) rem(12);
+      border-radius: rem(6);
+      font-size: rem(13);
+      font-family: var(--font-family-base);
+      color: var(--color-gray);
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.12s ease;
+
+      @include hover {
+        background: var(--color-light);
+      }
+    }
+  }
+}
+
+@keyframes context-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Мобильная адаптация: сайдбар скрыт по умолчанию, выезжает сверху
+@include tablet {
+  .chat-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 100vh;
+    transform: translateX(-100%);
+
+    &--open {
+      transform: translateX(0);
+    }
+
+    &__overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(0, 0, 0, 0.3);
+      animation: overlay-fade 0.2s ease;
+    }
+  }
+}
+
+@keyframes overlay-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
