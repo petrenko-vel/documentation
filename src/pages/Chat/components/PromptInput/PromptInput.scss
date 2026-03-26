@@ -1,0 +1,95 @@
+@use '../../../../style/helpers/' as *;
+
+.prompt-form {
+  width: 100%;
+  max-width: rem(800);
+  margin: 0 auto;
+  padding: rem(12) rem(20) rem(8);
+
+  &__container {
+    display: flex;
+    align-items: flex-end;
+    gap: rem(10);
+    background: #fff;
+    border: 1px solid var(--color-light);
+    border-radius: rem(24);
+    padding: rem(6) rem(8) rem(6) rem(20);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus-within {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(25, 124, 255, 0.1);
+    }
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: rem(15);
+    font-family: var(--font-family-base);
+    color: var(--color-gray);
+    padding: rem(10) 0;
+    resize: none;
+    line-height: 1.5;
+    max-height: rem(120);
+
+    &::placeholder {
+      color: var(--color-gray-s);
+    }
+
+    &:disabled {
+      opacity: var(--opacity);
+      cursor: not-allowed;
+    }
+  }
+
+  &__button {
+    @include flex-center;
+    @include square(rem(40));
+    flex-shrink: 0;
+    background: var(--color-accent);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    @include hover {
+      background: #1466cc;
+      transform: scale(1.05);
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.95);
+    }
+
+    &:disabled {
+      background: var(--color-gray-xs);
+      cursor: not-allowed;
+    }
+  }
+
+  &__hint {
+    display: block;
+    text-align: center;
+    font-size: rem(11);
+    color: var(--color-gray-s);
+    margin-top: rem(8);
+  }
+}
+
+@include mobile {
+  .prompt-form {
+    padding: rem(8) rem(12) rem(6);
+
+    &__input {
+      font-size: rem(16); // Предотвращает zoom на iOS
+    }
+
+    &__hint {
+      display: none;
+    }
+  }
+}

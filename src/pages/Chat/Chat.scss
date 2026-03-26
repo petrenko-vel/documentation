@@ -3,14 +3,16 @@
 .chat {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 80px); // Высота с учетом хедера
+    height: calc(100vh - 80px);
     min-height: 500px;
+    background-color: #fafafa;
 
     &__inner {
         display: flex;
         flex-direction: column;
         height: 100%;
-        width: 1200px;
+        width: 100%;
+        max-width: rem(900);
         margin: 0 auto;
         padding: rem(20) var(--container-padding-x);
     }
@@ -19,23 +21,22 @@
     &__messages {
         flex: 1;
         overflow-y: auto;
-        padding: rem(20) 0;
+        padding: rem(24) 0;
         display: flex;
         flex-direction: column;
         gap: rem(16);
-        
-        Кастомный скроллбар
+
+        // Кастомный скроллбар
         &::-webkit-scrollbar {
-            width: rem(6);
+            width: rem(5);
         }
 
         &::-webkit-scrollbar-track {
-            background: var(--color-light);
-            border-radius: rem(3);
+            background: transparent;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: var(--color-gray-m);
+            background: var(--color-gray-xs);
             border-radius: rem(3);
 
             &:hover {
@@ -43,186 +44,11 @@
             }
         }
     }
-
-    // Базовые стили для сообщения
-    &__message {
-        display: flex;
-        margin-bottom: rem(8);
-
-        &--user {
-            justify-content: flex-end;
-
-            .chat__message-content {
-                background-color: var(--color-accent);
-                color: var(--color-light);
-                border-bottom-right-radius: rem(4);
-            }
-
-            .chat__message-time {
-                color: rgba(255, 255, 255, 0.7);
-            }
-        }
-
-        &--bot {
-            justify-content: flex-start;
-
-            .chat__message-content {
-                background-color: var(--color-light);
-                color: var(--color-gray);
-                border-bottom-left-radius: rem(4);
-            }
-
-            .chat__message-time {
-                color: var(--color-gray-m);
-            }
-        }
-    }
-
-    // Контейнер содержимого сообщения
-    &__message-content {
-        max-width: 75%;
-        padding: rem(12) rem(16);
-        border-radius: rem(18);
-        word-wrap: break-word;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-
-    // Текст сообщения
-    &__message-text {
-        margin: 0 0 rem(4) 0;
-        font-size: rem(14);
-        line-height: 1.5;
-        white-space: pre-wrap;
-    }
-
-    // Время отправки сообщения
-    &__message-time {
-        display: block;
-        font-size: rem(11);
-        margin-top: rem(4);
-        text-align: right;
-    }
-
-    // Контейнер для поля ввода и кнопки
-    &__input-container {
-        display: flex;
-        gap: rem(12);
-        padding: rem(16) 0;
-        border-top: 1px solid var(--color-light);
-        align-items: flex-end;
-    }
-
-    // Поле ввода текста
-    &__input {
-        flex: 1;
-        min-height: rem(44);
-        max-height: rem(120);
-        padding: rem(12) rem(16);
-        border: 1px solid var(--color-light);
-        border-radius: rem(22);
-        font-family: var(--font-family-base);
-        font-size: rem(14);
-        line-height: 1.5;
-        resize: none;
-        outline: none;
-        transition: border-color var(--transition-duration);
-
-        &:focus {
-            border-color: var(--color-accent);
-        }
-
-        &:disabled {
-            opacity:var(--opacity);
-            cursor: not-allowed;
-        }
-
-        &::placeholder {
-            color: var(--color-gray-m);
-        }
-    }
-
-    // Кнопка отправки
-    &__send-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: rem(44);
-        height: rem(44);
-        background-color: var(--color-accent);
-        color: var(--color-light);
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: background-color var(--transition-duration), transform var(--transition-duration);
-        flex-shrink: 0;
-
-        &:hover:not(:disabled) {
-            background-color: #1466cc;
-            transform: scale(1.05);
-        }
-
-        &:active:not(:disabled) {
-            transform: scale(0.95);
-        }
-
-        &:disabled {
-            opacity: var(--opacity);
-            cursor: not-allowed;
-        }
-
-        svg {
-            width: rem(20);
-            height: rem(20);
-        }
-    }
-
-    // Анимация загрузки (индикатор ожидания ответа)
-    &__loader {
-        display: flex;
-        gap: rem(4);
-        padding: rem(8) 0;
-
-        span {
-            width: rem(8);
-            height: rem(8);
-            border-radius: 50%;
-            background-color: var(--color-gray-m);
-            animation: chat-loader 1.4s ease-in-out infinite;
-
-            &:nth-child(1) {
-                animation-delay: 0s;
-            }
-
-            &:nth-child(2) {
-                animation-delay: 0.2s;
-            }
-
-            &:nth-child(3) {
-                animation-delay: 0.4s;
-            }
-        }
-    }
 }
 
-// Анимация для индикатора загрузки
-@keyframes chat-loader {
-    0%, 80%, 100% {
-        transform: scale(0.8);
-        opacity: var(--opacity);
-    }
-    40% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-// Адаптивность для мобильных устройств
+// Адаптивность
 @include tablet {
     .chat {
-        &__message-content {
-            max-width: 85%;
-        }
-
         &__inner {
             padding: rem(16) var(--container-padding-x);
         }
@@ -237,19 +63,5 @@
             padding: rem(16) 0;
             gap: rem(12);
         }
-
-        &__message-content {
-            max-width: 90%;
-            padding: rem(10) rem(14);
-        }
-
-        &__input-container {
-            padding: rem(12) 0;
-        }
-
-        &__input {
-            font-size: rem(16); // Предотвращает zoom на iOS
-        }
     }
 }
-

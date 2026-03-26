@@ -1,0 +1,102 @@
+@use '../../../../style/helpers/' as *;
+
+.chat-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: rem(40) rem(20);
+  animation: welcome-fade 0.5s ease-out;
+
+  &__icon {
+    @include flex-center;
+    @include square(rem(80));
+    background: linear-gradient(135deg, rgba(25, 124, 255, 0.1), rgba(25, 124, 255, 0.05));
+    border-radius: rem(24);
+    color: var(--color-accent);
+    margin-bottom: rem(24);
+  }
+
+  &__title {
+    font-size: rem(28);
+    font-weight: 700;
+    color: var(--color-gray);
+    margin: 0 0 rem(8) 0;
+  }
+
+  &__subtitle {
+    font-size: rem(15);
+    color: var(--color-gray-m);
+    margin: 0 0 rem(32) 0;
+    max-width: rem(400);
+    line-height: 1.5;
+  }
+
+  &__suggestions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(10);
+    max-width: rem(520);
+    width: 100%;
+  }
+
+  &__suggestion {
+    display: flex;
+    align-items: center;
+    gap: rem(8);
+    padding: rem(12) rem(16);
+    background: #fff;
+    border: 1px solid var(--color-light);
+    border-radius: rem(12);
+    font-size: rem(13);
+    color: var(--color-gray);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    font-family: var(--font-family-base);
+    line-height: 1.4;
+
+    svg {
+      flex-shrink: 0;
+      color: var(--color-accent);
+    }
+
+    @include hover {
+      border-color: var(--color-accent);
+      background: rgba(25, 124, 255, 0.03);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(25, 124, 255, 0.1);
+    }
+  }
+}
+
+@keyframes welcome-fade {
+  from {
+    opacity: 0;
+    transform: translateY(rem(16));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@include mobile {
+  .chat-welcome {
+    padding: rem(24) rem(16);
+
+    &__icon {
+      @include square(rem(64));
+    }
+
+    &__title {
+      font-size: rem(22);
+    }
+
+    &__suggestions {
+      grid-template-columns: 1fr;
+    }
+  }
+}
