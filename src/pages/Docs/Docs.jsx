@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 
 // -------- КОМПОНЕНТЫ ----------------
 import DocsSidebar from './components/DocsSidebar';
@@ -77,6 +78,23 @@ export default function Docs() {
     // Скролл наверх при смене прибора
     contentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+
+  // ─── Обработка навигации из поиска ───
+  const location = useLocation();
+  useEffect(() => {
+    const { deviceId, sectionId } = location.state || {};
+    if (deviceId) {
+      handleDeviceChange(deviceId);
+      
+      if (sectionId) {
+        // Небольшая задержка, чтобы данные прибора успели проброситься в контент
+        const timer = setTimeout(() => {
+          handleNavigate(sectionId);
+        }, 300);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [location.state, handleDeviceChange, handleNavigate]);
 
   return (
     <div className="docs">
