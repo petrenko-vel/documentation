@@ -19,9 +19,16 @@ function getMockResponse() {
   return MOCK_RESPONSES[Math.floor(Math.random() * MOCK_RESPONSES.length)];
 }
 
-function fakeSendMessage() {
+function fakeSendMessage(text, isDeepMode = false) {
   return new Promise((resolve) => {
-    setTimeout(() => resolve(getMockResponse()), 1000 + Math.random() * 2000);
+    const delay = isDeepMode ? 3000 + Math.random() * 2000 : 1000 + Math.random() * 2000;
+    setTimeout(() => {
+      let response = getMockResponse();
+      if (isDeepMode) {
+        response = `[Глубокое мышление]:\n\n${response}`;
+      }
+      resolve(response);
+    }, delay);
   });
 }
 
@@ -124,11 +131,12 @@ export default function Chat() {
   };
 
   // ─── Отправка сообщения ──────────────────────────────────────────
-  const handleSend = async (text) => {
+  const handleSend = async (text, isDeepMode = false) => {
     const userMessage = {
       id: Date.now(),
       role: 'user',
       text,
+      isDeepMode,
       timestamp: Date.now(),
     };
 
@@ -149,7 +157,7 @@ export default function Chat() {
     setIsLoading(true);
 
     try {
-      const responseText = await fakeSendMessage(text);
+      const responseText = await fakeSendMessage(text, isDeepMode);
       const botMessage = {
         id: Date.now() + 1,
         role: 'bot',

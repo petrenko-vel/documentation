@@ -22,6 +22,47 @@
     }
   }
 
+  &__deep-btn {
+    @include flex-center;
+    @include square(rem(32));
+    flex-shrink: 0;
+    margin-bottom: rem(4);
+    background: transparent;
+    border: none;
+    border-radius: rem(8);
+    color: var(--color-gray-s);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    @include hover {
+      color: var(--color-accent);
+      background: rgba(25, 124, 255, 0.05);
+    }
+
+    &.is-active {
+      color: #fff;
+      background: linear-gradient(135deg, #197CFF 0%, #7042FF 100%);
+      box-shadow: 0 4px 12px rgba(25, 124, 255, 0.3);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        inset: rem(-2);
+        border-radius: rem(10);
+        background: linear-gradient(135deg, rgba(25, 124, 255, 0.5) 0%, rgba(112, 66, 255, 0.5) 100%);
+        opacity: 0.3;
+        z-index: -1;
+        filter: blur(4px);
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
   &__input {
     flex: 1;
     border: none;
